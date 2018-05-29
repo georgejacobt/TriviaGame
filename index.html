@@ -6,14 +6,17 @@
     <title>Trivia Game - Advanced</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="../TriviaGameLocal/assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../TriviaGame/assets/css/style.css" />
     
 </head>
 <body>
 
-        <div class="container bg-warning mt-3" >
+        <div class="container mt-3" >
 
-            <h1 class="text-center" id="heading"> Totally Trivial Trivia!</h1>
+                
+                
+
+            <h1 class="text-center" id="heading"> Totally Trivial Trivia! </h1>
 
             <button type="button" class="btn btn-primary btn-lg text-center btn-block" id="start" style="display: block">Start</button>
 
@@ -21,27 +24,50 @@
 
 
             <quizArea style="display: none" id="quizArea">
-            <h4 class="text-center" id="timeRemain" > You have 10 seconds to respond</h4>
 
-            <h4 class="text-center" id="question"> Question printed here</h4>
+                <div class="all"> 
+                    <img src="../TriviaGame/assets/images/asdf.png"   id="game" alt="Responsive image" style="display: none">
+                    <h4 class="text-center" id="timeRemain" >10</h4>
 
-            <section class="text-center" id="options">
-            <h4 class="text-center responses" id="a"> Option a</h4>
-            <h4 class="text-center responses" id="b"> Option b</h4>
-            <h4 class="text-center responses" id="c"> Option c</h4> 
-            <h4 class="text-center message"></h4> 
-            <h4 class="text-center message2"></h4> 
-            <h4 class="text-center message3"></h4> 
-            <h4 class="text-center message2" style="display: none" id="correct"></h4> 
-            <h4 class="text-center message2" style="display: none" id="incorrect"></h4> 
-            <h4 class="text-center message2" style="display: none" id="unanswered"></h4> 
+                    <h4 class="text-center" id="question"> Question printed here</h4>
+
+                     <section class="text-center" id="options">
+                    <h4 class="text-center responses" id="a"> Option a</h4>
+                   <h4 class="text-center responses" id="b"> Option b</h4>
+                   <h4 class="text-center responses" id="c"> Option c</h4> 
+                   <h4 class="text-center responses" id="d"> Option d</h4> 
+                  
+
+               </div>
+
+               <div class="stats" style="color: white; border: solid white">
+               <h4 class="text-center message"></h4> 
+                 <h4 class="text-center message2" id="rightAnswer"></h4> 
+                 <img src=""   id="gifs" alt="Responsive image" style="display: none" class="mx-auto" >
+                    <h4 class="text-center message3"></h4> 
+                 <h4 class="text-center message2" style="display: none" id="correct"></h4> 
+                   <h4 class="text-center message2" style="display: none" id="incorrect"></h4> 
+                 <h4 class="text-center message2" style="display: none" id="unanswered"></h4> 
+               </div>
+
+           
+
+            
+
+           
 
             <button type="button" class="btn btn-primary btn-lg text-center btn-block" id="again" style="display: none">Play Again?</button>
             </section>
            </quizArea>
 
          
-            
+           <audio id="audio" controls style="display:none">
+                <source src="../TriviaGame/assets/audio/commerical break.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+              </audio>
+
+              <audio id="audio1" controls style="display:none">
+                    <source src="../TriviaGame/assets/audio/correct answer.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+                  </audio>
 
 
 
@@ -55,6 +81,6 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../TriviaGameLocal/assets/javascript/app.js"></script> 
+    <script src="../TriviaGame/assets/javascript/app.js"></script> 
 </body>
 </html>

@@ -7,21 +7,26 @@ let totalRight = 0;
 let startDiv = $("#start");
 let wrongResponse = 0;
 let clickTrack = 4;
+let imageMoveIndex = 0;
 
 
 
 function showQuiz(){
     $("#start").css("display", "none");
     $("#quizArea").css("display", "block");
+    $("#game").css("display", "block");
     $("#again").css("display","none");
+    $("#gifs").css("display","none");
 
-    questionDiv.html("");
+   questionDiv.html("");
         $("#correct").css("display", "none");
         $("#correct").html("");
         $("#incorrect").css("display", "none");
         $("#incorrect").html("");
         $(".message2").html(" ");
         $(".message3").html(" ");
+        messageDiv2.text(" ");
+        $("#rightAnswer").text(" ");
 
 }
 
@@ -33,41 +38,51 @@ function showQuiz(){
   }
   //fireTimer();
   
-function Questions (question,a,b,c,corerctAnswer){
+function Questions (question,a,b,c,d,link,corerctAnswer){
     this.question = question;
     this.a = a;
     this.b = b;
     this.c = c;
+    this.d = d;
+    this.link = link
     this.corerctAnswer = corerctAnswer;
   }
 
 
-var q1 = new Questions ("What is my Name",
+var q1 = new Questions ("What is my Name?",
                         "George",
                         "Tina",
                         "Timothy",
+                        "Sachin",
+                        "../TriviaGame/assets/images/George.gif",
                         "a"
 )
 
-var q2 = new Questions ("Where is my Home",
+var q2 = new Questions ("Where is my Home?",
                         "Norway",
                         "Iceland",
                         "Houston",
+                        "Kochi",
+                        "../TriviaGame/assets/images/houston.gif",
                         "c"
 )
 
-var q3 = new Questions ("What is my son's name",
+var q3 = new Questions ("What is my son's name?",
                         "JJ Watt",
                         "Timothy",
-                        "Sachin Tendulkar",
+                        "Sachin ",
+                        "James",
+                        "../TriviaGame/assets/images/timothy.gif",
                         "b"
 )
 
-var q4 = new Questions ("What is my mom's name",
-                        "Celine",
-                        "Queen Elizabeth",
-                        "Alice",
-                        "a"
+var q4 = new Questions ("Where in Houston do I live?",
+                        "Spring",
+                        "Richmond",
+                        "Kingwood",
+                        "Pearland",
+                        "../TriviaGame/assets/images/richmond.gif",
+                        "b"
 )
 
 let questionArray =[q1,q2,q3,q4];
@@ -80,6 +95,7 @@ var questionDiv = $("#question");
 var responseDiva = $("#a");
 var responseDivb = $("#b");
 var responseDivc = $("#c");
+var responseDivd = $("#d");
 var sectionsDiv = $("#options");
 var messageDiv = $(".message");
 var messageDiv2 = $(".message2");
@@ -94,6 +110,7 @@ questionDiv.text(questionArray[questionArrayIndex].question);
 responseDiva.text(questionArray[questionArrayIndex].a);
 responseDivb.text(questionArray[questionArrayIndex].b);
 responseDivc.text(questionArray[questionArrayIndex].c);
+responseDivd.text(questionArray[questionArrayIndex].d);
 correctResponse = questionArray[questionArrayIndex].corerctAnswer;
 
 for (const prop in questionArray[questionArrayIndex]){
@@ -107,8 +124,13 @@ $("#start").on("click", function(){
 
     //alert("ok");
     showQuiz();
-    firstTime();
-    fireTimer();
+    document.getElementById('audio').play();
+    setTimeout(firstTime, 4000);
+    setTimeout(fireTimer, 4000);
+
+      
+
+    
     
 
 
@@ -149,6 +171,7 @@ function resetQuiz(){
  responseReceived = false;
  wrongResponse =0;
 clickTrack = 4;
+imageMoveIndex =0;
 
 
 }
@@ -161,9 +184,11 @@ function displayNewQuestion(){
         responseDiva.text(questionArray[questionArrayIndex].a);
         responseDivb.text(questionArray[questionArrayIndex].b);
         responseDivc.text(questionArray[questionArrayIndex].c);
+        responseDivd.text(questionArray[questionArrayIndex].d);
         messageDiv.text(" ");
         messageDiv2.text(" ");
         $(".message3").text(" ");
+        $("#gifs").css("display","none");
         correctResponse = questionArray[questionArrayIndex].corerctAnswer;
         responseReceived = false;
 
@@ -178,6 +203,8 @@ function displayNewQuestion(){
         $("#again").css("display", "block");
        // sectionsDiv.text("Game Over - Start Again?");
        messageDiv.text(" ");
+       messageDiv2.text(" ");
+       $("#rightAnswer").text(" ");
        $(".message3").text(" ");
         questionDiv.html("All Done! Heres how you did!!");
         $("#correct").css("display", "block");
@@ -189,6 +216,8 @@ function displayNewQuestion(){
 
     }
 
+    imageMoveIndex = imageMoveIndex +1;
+
 
 }
 
@@ -198,17 +227,20 @@ function displayNewQuestion(){
 function timer(){
     if (timeRemain > 1){
     timeRemain = timeRemain - 1;
-    timediv.text("Time Remaining:"+" "+ timeRemain+" "+"Seconds");
+    timediv.text(timeRemain);
     
     }
     else {
         responseDiva.text(" ");
         responseDivb.text(" ");
         responseDivc.text(" ");
+        responseDivd.text(" ");
         messageDiv.text("Sorry Time Out!");
-        messageDiv2.append("The right answer is"+ " "+ rightAnswer);
+        $("#rightAnswer").text("The right answer is"+ " "+ rightAnswer);
+        $("#gifs").attr("src",questionArray[imageMoveIndex].link);
+        $("#gifs").css("display","block");
         reset();
-        setTimeout(displayNewQuestion,3000);
+        setTimeout(displayNewQuestion,8000);
        
         
     }
@@ -225,7 +257,7 @@ $(".responses").on("click", function(){
     responseReceived = true;
 
     reset();
-    setTimeout(displayNewQuestion,3000);
+    setTimeout(displayNewQuestion,8000);
     
     
 
@@ -237,7 +269,13 @@ $(".responses").on("click", function(){
            responseDiva.text(" ");
            responseDivb.text(" ");
            responseDivc.text(" ");
+           responseDivd.text(" ");
            messageDiv.text("Good Job!! ");
+           document.getElementById('audio1').play();
+           //console.log(questionArray[questionArrayIndex].link);
+           $("#gifs").attr("src",questionArray[imageMoveIndex].link);
+           $("#gifs").css("display","block");
+           
 
            
 
@@ -248,8 +286,11 @@ $(".responses").on("click", function(){
             responseDiva.text(" ");
            responseDivb.text(" ");
            responseDivc.text(" ");
+           responseDivd.text(" ");
             messageDiv.text("Sorry thats not right!");
             $(".message3").text("The right answer is"+ " "+ rightAnswer);
+            $("#gifs").attr("src",questionArray[imageMoveIndex].link);
+           $("#gifs").css("display","block");
            
 
             

@@ -9,12 +9,25 @@ body{
     color: blue;
 }
 #timeRemain{
-    padding-top: 80px;
+    position: absolute;
+    top: 40px;
+    bottom: 40px;
+    left: 537px;
+   
+   
+    color: red;
 }
 
 #question{
+    position: absolute;
+    top: 115px;
+    bottom: 40px;
+    left: 435px;
+    
+   
 
-    padding-top: 40px;
+    
+    color: white;
   
 }
 
@@ -42,10 +55,58 @@ body{
 
 .container{
     height: 700px;
+    
+}
+
+#content{
+    
+    background-image: url(../images/triviaBG.png);
+    background: red;
 }
 
 #again{
 
     margin-top: 20px;
+}
+
+#game{
+
+    margin-top: 60px;
+    position: relative;
+    left: 40px;
+
+
+}
+
+.all{
+    position: relative;
+}
+
+#a{
+    position: absolute;
+    left: 30px;
+    top: 200px;
+    color: white;
+}
+
+#b{
+    position: absolute;
+    left: 400px;
+    top: 200px;
+    color: white;
+}
+
+#c{
+    position: absolute;
+    left: 30px;
+    top: 270px;
+    color: white;
+}
+
+#d{
+    position: absolute;
+    left: 400px;
+    top: 270px;
+    color: white;
 }
 
