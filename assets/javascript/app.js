@@ -204,6 +204,7 @@ function displayNewQuestion(){
        // sectionsDiv.text("Game Over - Start Again?");
        messageDiv.text(" ");
        messageDiv2.text(" ");
+       $("#timeRemain").text(" ");
        $("#rightAnswer").text(" ");
        $(".message3").text(" ");
         questionDiv.html("All Done! Heres how you did!!");
