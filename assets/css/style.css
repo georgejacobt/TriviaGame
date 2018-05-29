@@ -1,0 +1,51 @@
+body{
+    background: url(../images/wwbm.jpg);
+    
+    
+}
+
+#heading{
+    padding-top: 40px;
+    color: blue;
+}
+#timeRemain{
+    padding-top: 80px;
+}
+
+#question{
+
+    padding-top: 40px;
+  
+}
+
+#options{
+    padding-top: 20px;
+}
+
+.responses{
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+.responses:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+#start{
+    margin-top: 160px;
+    margin-bottom: 160px;
+    font-size: 40px;
+    
+    
+}
+
+.container{
+    height: 700px;
+}
+
+#again{
+
+    margin-top: 20px;
+}
+
